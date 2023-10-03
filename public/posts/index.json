@@ -1,0 +1,10 @@
+[
+    {
+        "ref": "/posts/hello/",
+        "title": "Hello",
+        "section": "posts",
+        "tags": null,
+        "date" : "2021.12.01",
+        "body": "oh hi\n"
+    }
+]
