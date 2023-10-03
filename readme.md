@@ -1,3 +1,3 @@
-#Open Privacy Center
+# Open Privacy Hub
 
 
