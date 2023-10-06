@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <title>DOS News</title>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="theme-color" content="#000084" />
+    <link rel="icon" href="https://clevis-11.github.io/DOSNews//favicon.ico">
+    <link rel="canonical" href="https://clevis-11.github.io/DOSNews/">
+    
+    
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"></button>
+            <a class="brand" href="https://clevis-11.github.io/DOSNews/">DOS News</a>
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    
+                    
+                        
+                            <li>
+                                <a href="/DOSNews/cybersecurity">
+                                    
+                                    <span>CyberSecurity</span>
+                                </a>
+                            </li>
+                        
+                    
+                        
+                            <li>
+                                <a href="/DOSNews/tech">
+                                    
+                                    <span>Tech</span>
+                                </a>
+                            </li>
+                        
+                    
+                        
+                            <li>
+                                <a href="/DOSNews/finance">
+                                    
+                                    <span>Finance</span>
+                                </a>
+                            </li>
+                        
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav><div id="content" class="container">
+
+<div class="row-fluid navmargin">
+    <div class="page-header">
+        <h1>Privacy and Cybersecurity - Mon, Jan 1, 0001</h1>
+    </div>
+    <p class="lead"></p>
+    <style>
+h1 {
+            font-size: 20px;
+            margin: 0;
+            color: white;  
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .source-section {
+            border: 0px solid #e67e22;
+            padding: 10px;
+            flex: 45%;  
+        }
+
+        .source-title {
+            font-size: 20px;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .source-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .source-list-item {
+            margin-bottom: 10px;
+        }
+
+        .source-link {
+            color: #fefe54;
+        }
+
+        .date {
+            font-size: 14px;
+            color: gray;
+        }
+
+        .top-nav a {
+            color: #fefe54;
+            text-decoration: none;
+        }
+
+        .top-nav a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+         
+        .loading-bar-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;  
+            width: 100%;  
+            background-color: #000084;  
+            margin: 0;  
+    padding: 0;  
+        }
+
+        .loading-bar {
+            width: 50%;
+            height: 5px;
+            background-color: #555;  
+            display: flex; 
+            justify-content: center; 
+            margin: 0;  
+    padding: 0;  
+        }
+
+        .loading-progress {
+            height: 100%;
+            width: 0;
+            background-color: #fefe54  
+            animation: loading 2s linear infinite;  
+        }
+
+        @keyframes loading {
+            0% {
+                width: 0;
+            }
+            100% {
+                width: 100%;
+            }
+        }
+  @media (max-width: 768px) {
+         
+        h1 {
+            text-align: left;  
+        }
+
+        .container {
+            flex-direction: column;  
+            margin-left:0px;
+        }
+
+        .source-section {
+            flex: 100%;  
+        }
+
+        .source-title {
+            text-align: left;  
+        }
+
+        .source-list-item {
+            text-align: left;  
+        }
+
+        footer {
+            text-align: left;  
+        }
+
+         
+    }
+    </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/date-fns/2.25.0/date-fns.min.js"></script>
+
+</head>
+<body>
+<br>
+
+<section>
+    
+    <div id="barcon" class="loading-bar-container">
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+    </div>
+
+    <div id="headline-list" class="container">
+        
+    </div>
+</section>
+      
+    
+<script>
+    
+
+    
+    const loadingBar = document.querySelector('.loading-bar');
+    loadingBar.style.display = 'block';
+
+    fetch('https://863ca323-3f93-475a-8070-93993a6cf211.id.repl.co/') 
+        .then(response => response.json())
+        .then(data => {
+            
+            loadingBar.style.display = 'none';
+            document.getElementById('barcon').remove();
+            const headlineList = document.getElementById('headline-list');
+            const sources = {};
+
+
+const formatDateTime = (dateTimeString) => {
+    try {
+        
+        const parts = dateTimeString.split(/[\s,]+/); 
+
+        if (parts.length < 6) {
+            
+            return dateTimeString;
+        }
+
+        
+        const monthAbbreviations = {
+            'Jan': 0, 'Feb': 1, 'Mar': 2, 'Apr': 3,
+            'May': 4, 'Jun': 5, 'Jul': 6, 'Aug': 7,
+            'Sep': 8, 'Oct': 9, 'Nov': 10, 'Dec': 11,
+        };
+        
+        const year = parseInt(parts[3], 10);
+        const month = monthAbbreviations[parts[2]];
+        const day = parseInt(parts[1], 10);
+        const timeParts = parts[4].split(':');
+        const hour = parseInt(timeParts[0], 10);
+        const minute = parseInt(timeParts[1], 10);
+        const second = parseInt(timeParts[2], 10);
+
+        
+        const formattedDate = new Date(Date.UTC(year, month, day, hour, minute, second));
+
+        
+        const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        const options = {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric',
+            second: 'numeric',
+            timeZone: userTimeZone,
+        };
+
+        return formattedDate.toLocaleString(undefined, options);
+    } catch (error) {
+        console.error('Error formatting date:', error);
+        
+        return dateTimeString;
+    }
+};
+
+
+            
+            data.forEach(item => {
+                const source = item.source;
+                if (!sources[source]) {
+                    sources[source] = [];
+                }
+                sources[source].push(item);
+            });
+
+            
+            for (const source in sources) {
+                const sourceSection = document.createElement('div');
+                sourceSection.className = 'source-section';
+
+                const sourceTitle = document.createElement('h3');
+                sourceTitle.className = 'source-title';
+                sourceTitle.textContent = source;
+
+                const sourceList = document.createElement('ul');
+                sourceList.className = 'source-list';
+
+                sources[source].forEach(item => {
+                    const title = item.title;
+                    const link = item.link;
+                    const date = formatDateTime(item.date); 
+
+                    const listItem = document.createElement('li');
+                    listItem.className = 'source-list-item';
+                    listItem.innerHTML = `<div class="date">${date}</div><a class="source-link" target="_blank" href="${link}">${title}</a>`;
+
+                    sourceList.appendChild(listItem);
+                });
+
+                sourceSection.appendChild(sourceTitle);
+                sourceSection.appendChild(sourceList);
+                headlineList.appendChild(sourceSection);
+            }
+
+            
+            const aboutSection = document.createElement('div');
+            aboutSection.className = 'source-section';
+
+            const aboutTitle = document.createElement('h3');
+            aboutTitle.className = 'source-title';
+            aboutTitle.textContent = 'About';
+        })
+        .catch(error => {
+            
+            loadingBar.style.display = 'none';
+            document.getElementById('barcon').remove();
+            console.error('Error:', error);
+        });
+</script>
+</body>
+
+
+    <h4><a href="https://clevis-11.github.io/DOSNews/">Back to Home</a></h4>
+</div>
+
+
+        </div><footer class="container">
+    <hr class="soften">
+    <p>
+    <a href="https://gitlab.com/maxlefou/hugo.386">hugo.386 theme by Max le Fou</a> | 
+
+&copy; 
+<a href="https://github.com/Clevis-11/DOSNews" target="_blank">
+    Clevis-11
+</a>
+<span id="thisyear">2023</span>
+
+    | DOS News
+
+
+        | Built on <a href="//gohugo.io" target="_blank">Hugo</a>
+
+</p>
+    <p class="text-center">
+        
+        
+        
+        
+        
+    </p>
+</footer>
+
+</body><link rel="stylesheet" href="/DOSNews/css/bootstrap.css">
+<link rel="stylesheet" href="/DOSNews/css/bootstrap-responsive.css">
+<link rel="stylesheet" href="/DOSNews/css/style.css">
+
+<script src="/DOSNews/js/jquery.js"></script>
+<script src="/DOSNews/js/bootstrap-386.js"></script>
+<script src="/DOSNews/js/bootstrap-transition.js"></script>
+<script src="/DOSNews/js/bootstrap-alert.js"></script>
+<script src="/DOSNews/js/bootstrap-modal.js"></script>
+<script src="/DOSNews/js/bootstrap-dropdown.js"></script>
+<script src="/DOSNews/js/bootstrap-scrollspy.js"></script>
+<script src="/DOSNews/js/bootstrap-tab.js"></script>
+<script src="/DOSNews/js/bootstrap-tooltip.js"></script>
+<script src="/DOSNews/js/bootstrap-popover.js"></script>
+<script src="/DOSNews/js/bootstrap-button.js"></script>
+<script src="/DOSNews/js/bootstrap-collapse.js"></script>
+<script src="/DOSNews/js/bootstrap-carousel.js"></script>
+<script src="/DOSNews/js/bootstrap-typeahead.js"></script>
+<script src="/DOSNews/js/bootstrap-affix.js"></script>
+<script>
+    _386 = { 
+        fastLoad: false ,
+        onePass: false , 
+        speedFactor: 1.5 
+    };
+
+    
+    function ThisYear() {
+        document.getElementById('thisyear').innerHTML = new Date().getFullYear();
+    };
+</script>
+</html>
